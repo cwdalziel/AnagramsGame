@@ -26,7 +26,7 @@ public class AnagramsGame {
 		validAnagrams = new HashMap<>();
 		dictionary = new HashSet<>();
 		try {
-			Scanner scanner = new Scanner(new File("src/words_alpha.txt"));
+			Scanner scanner = new Scanner(new File("src/engmix.txt"));
 			while (scanner.hasNextLine()) {
 				dictionary.add(scanner.nextLine());
 			}
