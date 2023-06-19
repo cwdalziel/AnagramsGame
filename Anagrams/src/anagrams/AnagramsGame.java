@@ -20,7 +20,7 @@ public class AnagramsGame {
 	private int score;
 
 	public AnagramsGame(String letters) {
-		letters = letters.toUpperCase();
+		this.letters = letters.toUpperCase();
 		score = 0;
 		usedWords = new HashMap<>();
 		validAnagrams = new HashMap<>();
@@ -72,23 +72,7 @@ public class AnagramsGame {
 	public Map<String, Integer> findAnagrams(String s, ArrayList<Character> chars) {
 		Map<String, Integer> map = new HashMap<>();
 		if (s.length() >= 3 && dictionary.contains(s.toLowerCase())) {
-			switch (s.length()) {
-			case 3:
-				map.put(s, 100);
-				break;
-			case 4:
-				map.put(s, 400);
-				break;
-			case 5:
-				map.put(s, 1200);
-				break;
-			case 6:
-				map.put(s, 2000);
-				break;
-			case 7:
-				map.put(s, 3000);
-				break;
-			}
+			map.put(s, getWordValue(s));
 		}
 		for (int i = 0; i < chars.size(); i++) {
 			@SuppressWarnings("unchecked")
@@ -128,6 +112,22 @@ public class AnagramsGame {
 		});
 		sortedMap.putAll(map);
 		return sortedMap;
+	}
+	
+	public int getWordValue(String s) {
+		switch (s.length()) {
+		case 3:
+			return 100;
+		case 4:
+			return 400;
+		case 5:
+			return 1200;
+		case 6:
+			return 2000;
+		case 7:
+			return 3000;
+		}
+		return 0;
 	}
 
 }
